@@ -3,35 +3,36 @@
 
 using namespace std;
 
-int interpolationSearch(vector<int>& nums, int target) {
-	int left = 0;
-	int right = nums.size() - 1;
+int interpolationSearch(vector<int>& nums, int elementoBusca) 
+{
+	int min = 0;
+	int max = nums.size() - 1;
 
-	while (left <= right && target >= nums[left] && target <= nums[right]) {
-		int pos = left + ((target - nums[left] * (right - left) / (nums[right] - nums[left])));
+	while (min <= max && elementoBusca >= nums[min] && elementoBusca<= nums[max]) {
+		int pos = (min + ((max - min) / (nums[max] - nums[min])) * elementoBusca - nums[min] );
 
-		if (nums[pos] == target) {
+		if (nums[pos] == elementoBusca) {
 			return pos;
 		}
-		else if (nums[pos] < target) {
-			left = pos + 1;
+		else if (nums[pos] < elementoBusca ) 
+		{
+			min = pos + 1;
 		}
-		else {
-			right = pos - 1;
+		else 
+		{
+			max = pos - 1;
 		}
 	}
-
-
-	return -1;
+		return -1;
 }
 
 int main() {
 	vector <int> nums = { 1,2,3,4,5,6,7,8 };
-	int target = 26;
-	int index = interpolationSearch(nums, target);
+	int elementoBusca = 6;
+	int indice = interpolationSearch(nums, elementoBusca);
 
-	if (index != -1) {
-		cout << "\nAlvo encontrado no indice de nro: " << index << endl;
+	if (indice != -1) {
+		cout << "\nAlvo encontrado no indice de nro: " << indice << endl;
 	}
 	else {
 		cout << "\nAlvo nao encontrado! " << endl;
