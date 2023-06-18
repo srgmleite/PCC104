@@ -8,7 +8,7 @@ typedef struct {
 } aresta;
 
 void uniao(int* comp, int n_vertices, int c1, int c2) {
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < n_vertices; i++) {
         if (comp[i] == c2)
             comp[i] = c1;
     }
