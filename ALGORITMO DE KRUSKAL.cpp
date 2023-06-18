@@ -3,7 +3,7 @@ using namespace std;
 
 typedef struct {
     int primeiro;
-    int segunddo;
+    int segundo;
     int peso;
 } aresta;
 
@@ -18,9 +18,9 @@ int kruskal(aresta* grafo, int n_arestas, int* comp, int n_vertices) {
     int total = 0;
 
     for (int i = 0; i < n_arestas; i++) {
-        if (comp[grafo[i].primeiro] != comp[grafo[i].segunddo]) {
+        if (comp[grafo[i].primeiro] != comp[grafo[i].segundo]) {
             total += grafo[i].peso;
-            uniao(comp, n_vertices, comp[grafo[i].primeiro], comp[grafo[i].segunddo]);
+            uniao(comp, n_vertices, comp[grafo[i].primeiro], comp[grafo[i].segundo]);
         }
     }
 
@@ -36,7 +36,7 @@ int main() {
         cout << "PRIMEIRO: ";
         cin >> arestas[i].primeiro;
         cout << "SEGUNDO: ";
-        cin >> arestas[i].segunddo;
+        cin >> arestas[i].segundo;
         cout << "PESO: ";
         cin >> arestas[i].peso;
     }
