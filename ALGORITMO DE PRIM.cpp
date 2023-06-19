@@ -9,9 +9,21 @@ struct Aresta {
 
 void exibirMST(vector<int>& parent, vector<vector<int>>& graph) {
     cout << "Aresta \tPeso" << endl;
+    int custoTotal = 0;
     for (int i = 1; i < parent.size(); i++) {
         cout << parent[i] << " - " << i << "\t" << graph[i][parent[i]] << endl;
+        custoTotal += graph[i][parent[i]];
     }
+    cout << "Custo total da arvore: " << custoTotal << endl;
+}
+
+bool temCiclo(int u, vector<int>& parent) {
+    while (parent[u] != -1) {
+        if (u == parent[u])
+            return true;
+        u = parent[u];
+    }
+    return false;
 }
 
 int encontrarVerticeMinimo(vector<int>& chave, vector<bool>& mstSet) {
@@ -39,7 +51,7 @@ void primMST(vector<vector<int>>& arestas, int numVertices) {
         mstSet[u] = true;
 
         for (int v = 0; v < numVertices; v++) {
-            if (arestas[u][v] && mstSet[v] == false && arestas[u][v] < chave[v]) {
+            if (arestas[u][v] && mstSet[v] == false && arestas[u][v] < chave[v] && !temCiclo(u, arvoreMinima)) {
                 arvoreMinima[v] = u;
                 chave[v] = arestas[u][v];
             }
