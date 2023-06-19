@@ -25,18 +25,18 @@ void exibirMST(int parent[], int graph[V][V]) {
 }
 
 void primMST(int graph[V][V]) {
-    int arvoreMinima[V];   // Array para armazenar a árvore geradora mínima
-    int chave[V];    // Chave usada para escolher a aresta de menor peso
-    bool mstSet[V];  // Array para rastrear os vértices incluídos na MST
+    int arvoreMinima[V];   
+    int chave[V];    
+    bool mstSet[V]; 
 
-    // Inicializar todas as chaves como infinito e mstSet[] como falso
+    
     for (int i = 0; i < V; i++) {
         chave[i] = INT_MAX;
         mstSet[i] = false;
     }
 
-    chave[0] = 0;       // Atribuir chave 0 ao primeiro vértice
-    arvoreMinima[0] = -1;    // O primeiro vértice é a raiz da MST
+    chave[0] = 0;       
+    arvoreMinima[0] = -1;    
 
     for (int count = 0; count < V - 1; count++) {
         int u = encontrarVerticeMinimo(chave, mstSet);
