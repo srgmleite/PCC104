@@ -21,7 +21,7 @@ int kruskal(aresta* grafo, int n_arestas, int* comp, int n_vertices, vector<ares
     for (int i = 0; i < n_arestas; i++) {
         if (comp[grafo[i].primeiro] != comp[grafo[i].segundo]) {
             total += grafo[i].peso;
-            caminho.push_back(grafo[i]); // Adiciona a aresta selecionada ao caminho percorrido
+            caminho.push_back(grafo[i]); 
             uniao(comp, n_vertices, comp[grafo[i].primeiro], comp[grafo[i].segundo]);
         }
     }
@@ -37,7 +37,7 @@ void exibirCaminho(const vector<aresta>& caminho) {
 }
 
 int main() {
-    // Conjunto pré-definido de arestas
+    
     aresta arestas[10] = {
         {0, 1, 4},
         {0, 2, 8},
@@ -56,7 +56,7 @@ int main() {
     for (int i = 0; i < 6; i++)
         componentes[i] = i;
 
-    vector<aresta> caminho; // Vetor para armazenar o caminho percorrido
+    vector<aresta> caminho; 
 
     int custoMST = kruskal(arestas, 10, componentes, 6, caminho);
 
